@@ -1,21 +1,19 @@
-# International-Reference-Ionosphere-2020-matlab-version-
-The IRI2020 (International Reference Ionosphere 2020) model is an empirical standard model for ionospheric parameters.
+# IRI2020 Model Documentation
 
-# Introduction
+## English Version
 
-The IRI2020 (International Reference Ionosphere 2020) model is an empirical standard model for ionospheric parameters. It provides electron density profiles and other ionospheric characteristics based on location, time, and altitude inputs. This MATLAB implementation allows users to calculate ionospheric electron density at specified geographic coordinates, time, and altitude range.
+### Introduction
+The **IRI2020 (International Reference Ionosphere 2020)** model is an empirical standard model for ionospheric parameters. It provides electron density profiles and other ionospheric characteristics based on location, time, and altitude inputs.
 
-# Key features:
-• Calculates electron density (Ne/m³) profiles
+**Key Features:**
+- Calculates electron density (Ne/m³) profiles
+- Supports altitude ranges from 60 km to 2000 km
+- Accepts both datenum and datetime formats for time input
+- Returns a structured output with comprehensive ionospheric data
 
-• Supports altitude ranges from 60 km to 2000 km
+### Usage Example
 
-• Accepts both datenum and datetime formats for time input
-
-• Returns a structured output with comprehensive ionospheric data
-
-# Usage Example
-
+```matlab
 % Clear workspace
 clc; clear;
 
@@ -36,24 +34,22 @@ xlabel('Electron Density (Ne/m³)', 'fontsize', 8);
 ylabel('Height (km)', 'fontsize', 8);
 set(gca, 'fontsize', 8, 'fontname', 'times');
 title(['UTC @ ', datestr(mydate)]);
+```
 
+## 中文版本
 
+### 模型介绍
+**IRI2020（国际参考电离层2020模型）** 是一个电离层参数的半经验标准模型，可根据地理位置、时间和高度范围计算电离层电子密度剖面和其他电离层特征。
 
-# 模型介绍
+**主要特点：**
+- 计算电子密度（Ne/m³）剖面
+- 支持60公里至2000公里的高度范围
+- 接受datenum和datetime两种时间输入格式
+- 返回包含完整电离层数据的结构体输出
 
-IRI2020（国际参考电离层2020模型）是一个电离层参数的半经验标准模型。该MATLAB实现可以根据地理位置、时间和高度范围计算电离层电子密度剖面和其他电离层特征。
+### 使用方法示例
 
-# 主要特点：
-• 计算电子密度（Ne/m³）剖面
-
-• 支持60公里至2000公里的高度范围
-
-• 接受datenum和datetime两种时间输入格式
-
-• 返回包含完整电离层数据的结构体输出
-
-使用方法示例
-
+```matlab
 % 清空工作区
 clc; clear;
 
@@ -74,5 +70,25 @@ xlabel('电子密度 (Ne/m³)', 'fontsize', 8);
 ylabel('高度 (km)', 'fontsize', 8);
 set(gca, 'fontsize', 8, 'fontname', 'times');
 title(['UTC时间 @ ', datestr(mydate)]);
+```
 
-![IRI徽标]([https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png](https://github.com/ohm1122/International-Reference-Ionosphere-2020-matlab-version-/blob/main/untitled.jpg) "IRI Logo")
+### 参数说明
+
+| 参数 | 说明 | 范围 |
+|------|------|------|
+| latitude | 纬度 | -90° 到 90° |
+| longitude | 经度 | -180° 到 180° |
+| time | 时间 | MATLAB datenum 或 datetime 格式 |
+| altitude | 高度 | 60 km 到 2000 km |
+
+### 输出结构
+```matlab
+OutData = 
+  struct with fields:
+    latitude: 45          % 纬度
+    longitude: 120        % 经度
+    time: [datetime]      % 时间
+    alt: [1×91 double]    % 高度数组
+    dens: [1×91 double]   % 电子密度数组
+    % 其他电离层参数...
+```
